@@ -11,7 +11,9 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::withCount('products')->latest()->paginate(10);
+        // Mengambil semua kategori (tanpa pagination Laravel) karena
+        // search, sort, dan pagination sudah ditangani oleh DataTable di sisi client.
+        $categories = Category::withCount('products')->latest()->get();
 
         return view('admin.categories.index', compact('categories'));
     }
@@ -44,9 +46,9 @@ class AdminCategoryController extends Controller
 
     public function show(Category $category)
     {
-        $category->load(['products' => fn($q) => $q->latest()->paginate(10)]);
+        $products = $category->products()->latest()->paginate(10);
 
-        return view('admin.categories.show', compact('category'));
+        return view('admin.categories.show', compact('category', 'products'));
     }
 
     public function edit(Category $category)

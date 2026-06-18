@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
 {
-    // Status yang valid untuk order
-    const STATUSES = ['pending', 'paid', 'shipped', 'completed', 'cancelled'];
+    // Sesuaikan dengan enum di database
+    const STATUSES = ['belum_bayar', 'menunggu_konfirmasi', 'diproses', 'selesai', 'dibatalkan'];
 
     public function index(Request $request)
     {
@@ -55,7 +55,7 @@ class AdminOrderController extends Controller
         ]);
 
         // Cegah mengubah order yang sudah selesai/dibatalkan
-        if (in_array($order->status, ['completed', 'cancelled'])) {
+        if (in_array($order->status, ['selesai', 'dibatalkan'])) {
             return redirect()->route('admin.orders.show', $order)
                 ->with('error', 'Order dengan status "' . $order->status . '" tidak dapat diubah.');
         }
@@ -63,6 +63,6 @@ class AdminOrderController extends Controller
         $order->update($validated);
 
         return redirect()->route('admin.orders.show', $order)
-            ->with('success', 'Status order berhasil diperbarui menjadi "' . $validated['status'] . '".');
+            ->with('success', 'Status order berhasil diperbarui.');
     }
 }

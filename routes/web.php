@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\Admin\AdminUserController;
+
 
 // Rute Keranjang Belanja (Bisa diakses siapa saja)
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
@@ -41,6 +43,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('categories', AdminCategoryController::class);
     Route::resource('products', AdminProductController::class);
     Route::resource('orders', AdminOrderController::class)->only(['index', 'show', 'update']);
+    Route::resource('users', AdminUserController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -99,6 +99,12 @@
                     <i class="fa-solid fa-receipt w-5 text-center"></i>
                     <span>Pesanan</span>
                 </a>
+                <a href="{{ route('admin.users.index') }}"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition
+                        {{ request()->routeIs('admin.users.*') ? 'bg-etsy-orange text-white' : 'text-white/70 hover:bg-white/5 hover:text-white' }}">
+                    <i class="fa-solid fa-users w-5 text-center"></i>
+                    <span>Pelanggan</span>
+                </a>
             </nav>
 
             <div class="px-3 py-4 border-t border-white/10 shrink-0">
