@@ -22,12 +22,39 @@ class UserSeeder extends Seeder
 
         // Akun Pembeli / User Biasa
         User::create([
-            'name' => 'Dimas Pembeli',
-            'email' => 'dimas@pembeli.com',
+            'name' => 'Lia Saripah',
+            'email' => 'lia@pembeli.com',
             'password' => Hash::make('password123'),
             'role' => 'user',
             'phone' => '089876543210',
             'address' => 'Jl. Kebon Jeruk No. 12, Jakarta Barat',
+        ]);
+
+        User::create([
+            'name' => 'Siti Rahayu',
+            'email' => 'siti@pembeli.com',
+            'password' => Hash::make('password123'),
+            'role' => 'user',
+            'phone' => '082345678901',
+            'address' => 'Jl. Raya Bogor No. 45, Bogor Utara',
+        ]);
+
+        User::create([
+            'name' => 'Budi Santoso',
+            'email' => 'budi@pembeli.com',
+            'password' => Hash::make('password123'),
+            'role' => 'user',
+            'phone' => '085678901234',
+            'address' => 'Jl. Sudirman No. 8, Surabaya',
+        ]);
+
+        User::create([
+            'name' => 'Rina Marlina',
+            'email' => 'rina@pembeli.com',
+            'password' => Hash::make('password123'),
+            'role' => 'user',
+            'phone' => '087890123456',
+            'address' => 'Jl. Diponegoro No. 22, Bandung',
         ]);
     }
 }
