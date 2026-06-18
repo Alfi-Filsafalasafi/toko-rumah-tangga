@@ -32,11 +32,9 @@
                     <div class="min-w-0">
                         <label class="block text-sm font-medium text-etsy-dark mb-1.5">Foto Produk Saat Ini</label>
                         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
-                            @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" class="w-16 h-16 object-cover rounded border border-etsy-border shrink-0">
-                            @else
-                            <div class="w-16 h-16 bg-gray-100 flex items-center justify-center rounded border border-etsy-border text-xs text-gray-400 shrink-0">Tak ada</div>
-                            @endif
+                            <div class="w-16 h-16 bg-etsy-light rounded-lg overflow-hidden shrink-0">
+                                <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/no-image.png') }}" alt="{{ $product->name }}" class="w-full h-full object-cover" onerror="this.src='{{ asset('images/no-image.png') }}'">
+                            </div>
 
                             <div class="w-full flex-1 min-w-0">
                                 <input type="file" name="image" id="image" accept="image/*"

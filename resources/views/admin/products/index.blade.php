@@ -112,13 +112,9 @@
                 @foreach ($products as $product)
                 <tr>
                     <td>
-                        @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-12 h-12 object-cover rounded-md border border-etsy-border">
-                        @else
-                        <div class="w-12 h-12 bg-etsy-light flex items-center justify-center rounded-md border border-etsy-border text-gray-400">
-                            <i class="fa-solid fa-image"></i>
+                        <div class="w-16 h-16 bg-etsy-light rounded-lg overflow-hidden">
+                            <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/no-image.png') }}" alt="{{ $product->name }}" class="w-full h-full object-cover" onerror="this.src='{{ asset('images/no-image.png') }}'">
                         </div>
-                        @endif
                     </td>
                     <td class="font-medium text-etsy-dark">
                         <span class="line-clamp-1">{{ $product->name }}</span>
@@ -133,10 +129,8 @@
                     </td>
                     <td>
                         <div class="flex items-center justify-center gap-2">
-                            <a href="{{ route('admin.products.show', $product) }}" title="Lihat"
-                                class="h-8 w-8 flex items-center justify-center rounded-lg text-etsy-gray hover:bg-etsy-light hover:text-etsy-dark transition">
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
+
+
                             <a href="{{ route('admin.products.edit', $product) }}" title="Edit"
                                 class="h-8 w-8 flex items-center justify-center rounded-lg text-blue-500 hover:bg-blue-50 transition">
                                 <i class="fa-solid fa-pen"></i>

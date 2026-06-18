@@ -27,9 +27,11 @@
                 <span class="absolute top-2 left-2 z-10 bg-white/95 backdrop-blur-sm text-etsy-dark text-[10px] font-bold px-2.5 py-1 rounded-md shadow-sm uppercase tracking-wide">
                     {{ $product->category->name }}
                 </span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+                <img
+                    src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/no-image.png') }}"
+                    alt="{{ $product->name }}"
+                    class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                    onerror="this.src='{{ asset('images/no-image.png') }}'">
             </div>
 
             <div class="flex-1 mt-1">
@@ -43,10 +45,12 @@
             <div class="absolute inset-0 bg-black/50 transition-opacity" id="backdrop-{{ $product->id }}" onclick="closeModal('modal-{{ $product->id }}')"></div>
 
             <div class="bg-white rounded-2xl shadow-xl z-10 w-full max-w-4xl overflow-hidden flex flex-col md:flex-row transform transition-transform scale-95" id="modal-content-{{ $product->id }}">
-                <div class="md:w-1/2 bg-etsy-light relative min-h-[400px] flex items-center justify-center border-r border-etsy-border">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
+                <div class="md:w-1/2 bg-etsy-light relative min-h-[400px] flex items-center justify-center border-r border-etsy-border overflow-hidden">
+                    <img
+                        src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/no-image.png') }}"
+                        alt="{{ $product->name }}"
+                        class="w-full h-full object-cover absolute inset-0"
+                        onerror="this.src='{{ asset('images/no-image.png') }}'">
                 </div>
 
                 <div class="md:w-1/2 p-8 relative bg-white flex flex-col h-full">

@@ -66,14 +66,12 @@ $statusLabels = [
                         <tr>
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
-                                    @if($item->product && $item->product->image)
-                                    <img src="{{ asset('storage/' . $item->product->image) }}" class="w-10 h-10 rounded object-cover border border-etsy-border">
-                                    @else
-                                    <div class="w-10 h-10 rounded bg-etsy-light border border-etsy-border flex items-center justify-center text-gray-400">
-                                        <i class="fa-solid fa-image text-xs"></i>
+                                    <div class="w-10 h-10 bg-etsy-light rounded-lg overflow-hidden shrink-0">
+                                        <img src="{{ $item->product->image ? asset('storage/' . $item->product->image) : asset('images/no-image.png') }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover" onerror="this.src='{{ asset('images/no-image.png') }}'">
                                     </div>
-                                    @endif
-                                    <span class="font-medium text-etsy-dark">{{ $item->product->name ?? 'Produk Dihapus' }}</span>
+                                    <div>
+                                        <p class="font-medium text-etsy-dark">{{ $item->product->name }}</p>
+                                    </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-center">Rp {{ number_format($item->price, 0, ',', '.') }}</td>

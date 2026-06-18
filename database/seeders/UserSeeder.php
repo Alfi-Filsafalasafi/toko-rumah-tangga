@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
         // Akun Admin Toko
         User::create([
             'name' => 'Admin Rumah Tangga',
-            'email' => 'admin@toko.com',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('password123'),
             'role' => 'admin',
             'phone' => '081234567890',
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
         // Akun Pembeli / User Biasa
         User::create([
             'name' => 'Lia Saripah',
-            'email' => 'lia@pembeli.com',
+            'email' => 'lia@gmail.com',
             'password' => Hash::make('password123'),
             'role' => 'user',
             'phone' => '089876543210',
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Siti Rahayu',
-            'email' => 'siti@pembeli.com',
+            'email' => 'siti@gmail.com',
             'password' => Hash::make('password123'),
             'role' => 'user',
             'phone' => '082345678901',
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Budi Santoso',
-            'email' => 'budi@pembeli.com',
+            'email' => 'budi@gmail.com',
             'password' => Hash::make('password123'),
             'role' => 'user',
             'phone' => '085678901234',
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Rina Marlina',
-            'email' => 'rina@pembeli.com',
+            'email' => 'rina@gmail.com',
             'password' => Hash::make('password123'),
             'role' => 'user',
             'phone' => '087890123456',
